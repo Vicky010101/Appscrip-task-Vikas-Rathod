@@ -1,0 +1,57 @@
+@keyframes shimmer {
+    0% {
+        background-position: -600px 0;
+    }
+
+    100% {
+        background-position: 600px 0;
+    }
+}
+
+.shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+    background-size: 1200px 100%;
+    animation: shimmer 1.6s infinite linear;
+    border-radius: var(--radius);
+}
+
+.card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--color-white);
+}
+
+.image {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    border-radius: 0;
+}
+
+.body {
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.lineShort {
+    height: 10px;
+    width: 40%;
+}
+
+.lineFull {
+    height: 12px;
+    width: 100%;
+}
+
+.lineMid {
+    height: 12px;
+    width: 65%;
+}
+
+.linePrice {
+    height: 14px;
+    width: 35%;
+    margin-top: 0.25rem;
+}

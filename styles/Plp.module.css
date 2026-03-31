@@ -1,0 +1,248 @@
+.hero {
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    padding: 2.5rem 2rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.hero p {
+    font-size: 0.9rem;
+    color: var(--color-secondary);
+    margin-top: 0.5rem;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--color-secondary);
+    padding: 0.75rem 2rem;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.breadcrumb a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+/* Error banner */
+.errorBanner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    color: #856404;
+    padding: 0.75rem 2rem;
+    font-size: 0.875rem;
+    max-width: 1440px;
+    margin: 0 auto;
+    border-radius: var(--radius);
+}
+
+/* Active filter chips */
+.chips {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 2rem;
+    max-width: 1440px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.chip {
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.chipClear {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    color: var(--color-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.chipClear:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* Toolbar */
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 2rem;
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-white);
+    max-width: 1440px;
+    margin: 0 auto;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.count {
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+}
+
+.searchHint {
+    color: var(--color-primary);
+    font-style: italic;
+}
+
+.toolbarRight {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sortSelect {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 0.4rem 0.75rem;
+    font-size: 0.875rem;
+    font-family: inherit;
+    color: var(--color-primary);
+    background: var(--color-white);
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.sortSelect:focus {
+    border-color: var(--color-primary);
+}
+
+/* Main layout */
+.layout {
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem 2rem;
+    max-width: 1440px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.main {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.pageBtn {
+    min-width: 36px;
+    height: 36px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-white);
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    padding: 0 0.5rem;
+    cursor: pointer;
+}
+
+.pageBtn:hover:not(:disabled) {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.activePage {
+    background: var(--color-primary);
+    color: var(--color-white) !important;
+    border-color: var(--color-primary);
+}
+
+.pageBtn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+/* No results */
+.noResults {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 5rem 2rem;
+    color: var(--color-secondary);
+    text-align: center;
+}
+
+.noResults p {
+    font-size: 1rem;
+}
+
+.resetBtn {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius);
+    padding: 0.6rem 1.5rem;
+    font-size: 0.875rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.resetBtn:hover {
+    opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 1.5rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .layout {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .toolbar {
+        padding: 0.75rem 1rem;
+    }
+
+    .breadcrumb,
+    .chips,
+    .errorBanner {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

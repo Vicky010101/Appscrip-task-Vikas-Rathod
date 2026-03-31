@@ -1,0 +1,98 @@
+.wrap {
+    position: relative;
+    display: inline-block;
+}
+
+/* Trigger button — matches design: uppercase label + chevron */
+.trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--color-primary);
+    padding: 0.4rem 0;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.trigger:hover {
+    color: var(--color-secondary);
+}
+
+.triggerLabel {
+    letter-spacing: 0.08em;
+}
+
+.chevron {
+    transition: transform 0.2s;
+    flex-shrink: 0;
+}
+
+.chevronUp {
+    transform: rotate(180deg);
+}
+
+/* Dropdown menu */
+.menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    min-width: 220px;
+    z-index: 50;
+    overflow: hidden;
+    animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    color: var(--color-secondary);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    user-select: none;
+}
+
+.option:hover {
+    background: var(--color-tag-bg);
+    color: var(--color-primary);
+}
+
+.optionActive {
+    color: var(--color-primary);
+}
+
+/* Checkmark column — fixed width so text aligns */
+.check {
+    width: 14px;
+    font-size: 0.85rem;
+    color: var(--color-primary);
+    flex-shrink: 0;
+    font-weight: 700;
+}

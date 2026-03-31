@@ -1,0 +1,136 @@
+.sidebar {
+    width: 240px;
+    flex-shrink: 0;
+}
+
+.section {
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.25rem 0;
+}
+
+.sectionTitle {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-secondary);
+    margin-bottom: 0.875rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.sectionTitle svg {
+    transition: transform 0.2s;
+}
+
+.sectionTitle.collapsed svg {
+    transform: rotate(-90deg);
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+    cursor: pointer;
+    padding: 0.2rem 0;
+    transition: color 0.2s;
+}
+
+.option:hover {
+    color: var(--color-primary);
+}
+
+.option input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+.option.active {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.clearBtn {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    color: var(--color-secondary);
+    margin-top: 1.25rem;
+    width: 100%;
+    transition: all 0.2s;
+}
+
+.clearBtn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.mobileToggle {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.drawer {
+    display: block;
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+    }
+
+    .mobileToggle {
+        display: flex;
+    }
+
+    .drawer {
+        display: none;
+    }
+
+    .drawer.open {
+        display: block;
+    }
+}
+
+.filterBadge {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    font-size: 0.65rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+}

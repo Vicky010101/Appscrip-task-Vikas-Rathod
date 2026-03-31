@@ -1,40 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Appscrip Task — Vikas Rathod
 
-## Getting Started
+A production-ready, SEO-optimized **Product Listing Page (PLP)** built with Next.js and the Fake Store API.
 
-First, run the development server:
+## Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+> [https://appscrip-task-vikas-rathod.vercel.app](https://appscrip-task-vikas-rathod.vercel.app)
+
+---
+
+## Tech Stack
+
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 16 (Pages Router) |
+| Language | JavaScript |
+| Styling | CSS Modules + plain CSS |
+| Rendering | Server-Side Rendering (SSR) via `getServerSideProps` |
+| Images | `next/image` with remote pattern config |
+| API | [Fake Store API](https://fakestoreapi.com) |
+| Deployment | Vercel |
+
+---
+
+## Features
+
+- **SSR** — products and categories fetched server-side for SEO
+- **Sidebar filters** — filter by category and price range
+- **Sorting** — Featured, Price Low→High, Price High→Low, Top Rated, A–Z
+- **Pagination** — 12 products per page
+- **Wishlist toggle** — per-card heart button
+- **Loading skeletons** — shimmer placeholders while data loads
+- **Responsive** — mobile (≤768px), tablet (≤1024px), desktop
+- **SEO** — meta tags, Open Graph, JSON-LD structured data, canonical URL
+- **Accessibility** — skip link, ARIA labels, semantic HTML
+
+---
+
+## Project Structure
+
+```
+├── components/
+│   ├── Header.js
+│   ├── Footer.js
+│   ├── Sidebar.js
+│   ├── ProductCard.js
+│   ├── ProductGrid.js
+│   └── SkeletonGrid.js
+├── pages/
+│   ├── _app.js
+│   ├── _document.js
+│   ├── index.js        ← PLP with getServerSideProps
+│   └── 404.js
+├── services/
+│   └── api.js          ← Fake Store API calls
+├── styles/
+│   ├── globals.css
+│   ├── Header.module.css
+│   ├── Footer.module.css
+│   ├── Sidebar.module.css
+│   ├── ProductCard.module.css
+│   ├── ProductGrid.module.css
+│   ├── Skeleton.module.css
+│   └── Plp.module.css
+└── next.config.mjs
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Setup
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```bash
+# Clone
+git clone https://github.com/VikasRathod/Appscrip-task-Vikas-Rathod.git
+cd Appscrip-task-Vikas-Rathod
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+# Install
+npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Dev server
+npm run dev
+# → http://localhost:3000
 
-## Learn More
+# Production build
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## Deployment (Vercel)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Push repo to GitHub
+2. Import project at [vercel.com/new](https://vercel.com/new)
+3. Framework preset: **Next.js** (auto-detected)
+4. Click **Deploy** — no env vars needed
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## API Endpoints Used
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+| Endpoint | Purpose |
+|---|---|
+| `GET /products` | All products (SSR) |
+| `GET /products/categories` | Category list (SSR) |
