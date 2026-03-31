@@ -27,7 +27,7 @@ https://appscrip-task-vikasrathod.netlify.app
 
 ## Features
 
-* Product listing with 190+ products, images, prices (in INR), ratings, and discount badges
+* Product listing with 190+ products, images, prices , ratings, and discount badges
 * Navbar category filtering (New In, Clothing, Shoes, Accessories, Sale)
 * Sidebar filters for category and price range
 * Sorting options (price low to high, high to low, newest, etc.)
