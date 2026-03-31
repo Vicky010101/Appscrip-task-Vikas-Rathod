@@ -2,7 +2,6 @@ import { createContext, useContext, useReducer, useEffect, useCallback, useMemo 
 
 export const USD_TO_INR = 83;
 
-// Memoised formatter — created once, reused
 const inrFormatter = new Intl.NumberFormat("en-IN", {
     style: "currency",
     currency: "INR",
@@ -21,7 +20,6 @@ export const NAV_CATEGORIES = {
     sale: null,
 };
 
-// ─── Reducers ────────────────────────────────────────────────────────────────
 function cartReducer(state, action) {
     switch (action.type) {
         case "ADD": {
@@ -46,31 +44,30 @@ function wishlistReducer(state, action) {
     switch (action.type) {
         case "TOGGLE": {
             const exists = state.some((i) => i.id === action.product.id);
-            return exists ? state.filter((i) => i.id !== action.product.id) : [...state, action.product];
+            return exists
+                ? state.filter((i) => i.id !== action.product.id)
+                : [...state, action.product];
         }
         case "INIT": return action.payload;
         default: return state;
     }
 }
 
-// ─── Context ──────────────────────────────────────────────────────────────────
 const ShopContext = createContext(null);
 
 export function ShopProvider({ children }) {
     const [cart, cartDispatch] = useReducer(cartReducer, []);
     const [wishlist, wishlistDispatch] = useReducer(wishlistReducer, []);
 
-    // Hydrate from localStorage once on mount
     useEffect(() => {
         try {
-            const c = localStorage.getItem("cart");
-            if (c) cartDispatch({ type: "INIT", payload: JSON.parse(c) });
-            const w = localStorage.getItem("wishlist");
-            if (w) wishlistDispatch({ type: "INIT", payload: JSON.parse(w) });
+            const savedCart = localStorage.getItem("cart");
+            const savedWishlist = localStorage.getItem("wishlist");
+            if (savedCart) cartDispatch({ type: "INIT", payload: JSON.parse(savedCart) });
+            if (savedWishlist) wishlistDispatch({ type: "INIT", payload: JSON.parse(savedWishlist) });
         } catch (_) { }
     }, []);
 
-    // Persist — debounced via useEffect dependency
     useEffect(() => {
         try { localStorage.setItem("cart", JSON.stringify(cart)); } catch (_) { }
     }, [cart]);
@@ -79,7 +76,6 @@ export function ShopProvider({ children }) {
         try { localStorage.setItem("wishlist", JSON.stringify(wishlist)); } catch (_) { }
     }, [wishlist]);
 
-    // Stable callbacks — never recreated
     const addToCart = useCallback((product) => cartDispatch({ type: "ADD", product }), []);
     const removeFromCart = useCallback((id) => cartDispatch({ type: "REMOVE", id }), []);
     const incQty = useCallback((id) => cartDispatch({ type: "INC", id }), []);
@@ -87,9 +83,8 @@ export function ShopProvider({ children }) {
     const clearCart = useCallback(() => cartDispatch({ type: "CLEAR" }), []);
     const toggleWishlist = useCallback((product) => wishlistDispatch({ type: "TOGGLE", product }), []);
 
-    // Derived — only recomputed when cart/wishlist changes
-    const cartCount = useMemo(() => cart.reduce((s, i) => s + i.qty, 0), [cart]);
-    const cartTotal = useMemo(() => cart.reduce((s, i) => s + i.price * i.qty, 0), [cart]);
+    const cartCount = useMemo(() => cart.reduce((sum, item) => sum + item.qty, 0), [cart]);
+    const cartTotal = useMemo(() => cart.reduce((sum, item) => sum + item.price * item.qty, 0), [cart]);
     const cartIds = useMemo(() => new Set(cart.map((i) => i.id)), [cart]);
     const wishIds = useMemo(() => new Set(wishlist.map((i) => i.id)), [wishlist]);
 

@@ -15,14 +15,12 @@ export default function SortDropdown({ value, onChange }) {
 
     const active = SORT_OPTIONS.find((o) => o.value === value) || SORT_OPTIONS[0];
 
-    // Close on outside click
     useEffect(() => {
         const handler = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
         document.addEventListener("mousedown", handler);
         return () => document.removeEventListener("mousedown", handler);
     }, []);
 
-    // Close on Escape
     useEffect(() => {
         const handler = (e) => { if (e.key === "Escape") setOpen(false); };
         document.addEventListener("keydown", handler);

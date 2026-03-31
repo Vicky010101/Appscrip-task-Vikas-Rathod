@@ -7,14 +7,12 @@ import styles from "../styles/Drawer.module.css";
 export default function CartDrawer({ open, onClose }) {
     const { cart, cartTotal, removeFromCart, incQty, decQty, clearCart } = useShop();
 
-    // Close on Escape
     useEffect(() => {
         const handler = (e) => { if (e.key === "Escape") onClose(); };
         if (open) document.addEventListener("keydown", handler);
         return () => document.removeEventListener("keydown", handler);
     }, [open, onClose]);
 
-    // Lock body scroll
     useEffect(() => {
         document.body.style.overflow = open ? "hidden" : "";
         return () => { document.body.style.overflow = ""; };
