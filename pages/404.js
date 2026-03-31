@@ -1,29 +1,19 @@
 import Head from "next/head";
 import Link from "next/link";
+import styles from "../styles/NotFound.module.css";
 
 export default function NotFound() {
     return (
         <>
             <Head>
-                <title>Page Not Found | Appscrip Task</title>
+                <title>Page Not Found | Mango Store</title>
+                <meta name="description" content="The page you are looking for does not exist." />
+                <meta name="robots" content="noindex" />
             </Head>
-            <main style={{ textAlign: "center", padding: "6rem 2rem" }}>
-                <h1 style={{ fontSize: "4rem", fontWeight: 700 }}>404</h1>
-                <p style={{ color: "#555", margin: "1rem 0 2rem" }}>
-                    The page you&apos;re looking for doesn&apos;t exist.
-                </p>
-                <Link
-                    href="/"
-                    style={{
-                        background: "#1a1a1a",
-                        color: "#fff",
-                        padding: "0.75rem 2rem",
-                        borderRadius: "4px",
-                        fontSize: "0.875rem",
-                    }}
-                >
-                    Back to Products
-                </Link>
+            <main className={styles.page} id="main-content">
+                <h1 className={styles.code}>404</h1>
+                <p className={styles.message}>The page you&apos;re looking for doesn&apos;t exist.</p>
+                <Link href="/" className={styles.link}>Back to Products</Link>
             </main>
         </>
     );

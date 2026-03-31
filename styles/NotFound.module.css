@@ -1,0 +1,38 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+    padding: 4rem 2rem;
+    gap: 1rem;
+}
+
+.code {
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+}
+
+.message {
+    font-size: 1rem;
+    color: var(--color-secondary);
+}
+
+.link {
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    margin-top: 0.5rem;
+}
+
+.link:hover {
+    opacity: 0.85;
+}
