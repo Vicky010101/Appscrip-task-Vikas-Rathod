@@ -273,7 +273,6 @@ export async function getServerSideProps() {
     const [products, categories] = await Promise.all([fetchProducts(), fetchCategories()]);
     return { props: { products, categories, error: null } };
   } catch (err) {
-    console.error("SSR fetch error:", err.message);
-    return { props: { products: [], categories: [], error: "Failed to load" } };
+        return { props: { products: [], categories: [], error: "Failed to load" } };
   }
 }

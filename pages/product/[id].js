@@ -197,7 +197,6 @@ export async function getServerSideProps({ params }) {
       .slice(0, 4);
     return { props: { product, relatedProducts, error: null } };
   } catch (err) {
-    console.error("Product SSR error:", err.message);
-    return { props: { product: null, relatedProducts: [], error: "Not found" } };
+        return { props: { product: null, relatedProducts: [], error: "Not found" } };
   }
 }

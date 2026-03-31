@@ -55,7 +55,7 @@ export async function fetchProducts() {
         const data = await res.json();
         return data.products.map(normaliseDummy);
     } catch (err) {
-        console.warn("DummyJSON failed, falling back to FakeStore:", err.message);
+        // fallback to FakeStore silently
         const res = await fetch(`${FAKESTORE_URL}/products`);
         if (!res.ok) throw new Error("Both APIs failed");
         const data = await res.json();
@@ -72,7 +72,7 @@ export async function fetchCategories() {
         // Return array of { slug, name } objects
         return data.map((c) => ({ slug: c.slug, name: c.name }));
     } catch (err) {
-        console.warn("DummyJSON categories failed, falling back:", err.message);
+        // fallback to FakeStore categories silently
         const res = await fetch(`${FAKESTORE_URL}/products/categories`);
         if (!res.ok) throw new Error("Both category APIs failed");
         const cats = await res.json();
