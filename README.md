@@ -4,7 +4,7 @@ A fully functional, responsive **Product Listing Page (PLP)** built with Next.js
 
 ## Live Demo
 
-[https://appscrip-task-vikas-rathod.netlify.app](https://appscrip-task-vikas-rathod.netlify.app)
+[https://appscrip-task-vikas-rathod.netlify.app]([https://appscrip-task-vikas-rathod.netlify.app](https://appscrip-task-vikasrathod.netlify.app/))
 
 ---
 
