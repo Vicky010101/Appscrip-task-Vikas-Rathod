@@ -166,7 +166,7 @@ export default function ProductListingPage({ products, categories, error }) {
         <meta property="og:title" content={heroTitle + " | Appscrip Task"} />
         <meta property="og:description" content="Browse products with filtering and responsive UI" />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://appscrip-task-vikas-rathod.vercel.app/" />
+        <link rel="canonical" href="https://appscrip-task-vikasrathod.netlify.app/" />
         <ProductListSchema products={products} />
       </Head>
 
