@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useShop, toINR } from "../context/ShopContext";
 import styles from "../styles/ProductCard.module.css";
 
-// Memoised star rating — only re-renders if rating value changes
 const StarRating = memo(function StarRating({ rating }) {
     const full = Math.round(rating);
     return (
@@ -39,7 +38,6 @@ const ProductCard = memo(function ProductCard({ product }) {
     return (
         <article className={styles.card} itemScope itemType="https://schema.org/Product">
             <Link href={`/product/${id}`} className={styles.cardLink} aria-label={`View ${title}`}>
-
                 <div className={styles.imageWrap}>
                     <Image
                         src={image}
@@ -90,7 +88,6 @@ const ProductCard = memo(function ProductCard({ product }) {
                         {rating && <div className={styles.rating}><StarRating rating={rating.rate} /></div>}
                     </div>
                 </div>
-
             </Link>
         </article>
     );

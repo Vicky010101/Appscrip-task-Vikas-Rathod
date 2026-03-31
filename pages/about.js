@@ -27,7 +27,6 @@ export default function AboutPage() {
             <Header />
 
             <main id="main-content">
-                {/* Hero */}
                 <section className={styles.hero}>
                     <h1>About Us</h1>
                     <p>

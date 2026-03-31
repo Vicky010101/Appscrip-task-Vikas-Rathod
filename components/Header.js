@@ -5,11 +5,9 @@ import { useShop } from "../context/ShopContext";
 import dynamic from "next/dynamic";
 import styles from "../styles/Header.module.css";
 
-// Code-split heavy drawer components — not needed on initial paint
 const CartDrawer = dynamic(() => import("./CartDrawer"), { ssr: false });
 const WishlistDrawer = dynamic(() => import("./WishlistDrawer"), { ssr: false });
 
-// Category filter items (homepage only)
 const NAV_ITEMS = [
     { key: "new-in", label: "New In" },
     { key: "clothing", label: "Clothing" },
@@ -18,7 +16,6 @@ const NAV_ITEMS = [
     { key: "sale", label: "Sale" },
 ];
 
-// Real page routes
 const ROUTE_ITEMS = [
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
@@ -35,6 +32,7 @@ export default function Header({ onSearch, searchValue = "", activeNav, onNavCha
     const { cartCount, wishlist } = useShop();
 
     useEffect(() => { setQuery(searchValue); }, [searchValue]);
+
     useEffect(() => {
         if (searchOpen && searchRef.current) searchRef.current.focus();
     }, [searchOpen]);
@@ -67,15 +65,11 @@ export default function Header({ onSearch, searchValue = "", activeNav, onNavCha
         <>
             <header className={styles.header} role="banner">
                 <div className={styles.topBar}>
-
-                    {/* Logo */}
                     <Link href="/" className={styles.logo} aria-label="MANGO Home" onClick={() => handleNav("new-in")}>
                         MANGO
                     </Link>
 
-                    {/* Desktop Nav */}
                     <nav className={styles.nav} aria-label="Main navigation">
-                        {/* Category filters — only active on homepage */}
                         {NAV_ITEMS.map((item) => (
                             <button
                                 key={item.key}
@@ -88,10 +82,8 @@ export default function Header({ onSearch, searchValue = "", activeNav, onNavCha
                             </button>
                         ))}
 
-                        {/* Divider */}
                         <span className={styles.navDivider} aria-hidden="true" />
 
-                        {/* Page routes */}
                         {ROUTE_ITEMS.map((item) => (
                             <Link
                                 key={item.href}
@@ -104,9 +96,7 @@ export default function Header({ onSearch, searchValue = "", activeNav, onNavCha
                         ))}
                     </nav>
 
-                    {/* Actions */}
                     <div className={styles.actions}>
-                        {/* Desktop search */}
                         <form
                             className={`${styles.searchForm} ${searchOpen ? styles.searchOpen : ""}`}
                             onSubmit={handleSearchSubmit}
@@ -142,7 +132,6 @@ export default function Header({ onSearch, searchValue = "", activeNav, onNavCha
                             )}
                         </button>
 
-                        {/* Wishlist */}
                         <button className={styles.iconBtn} aria-label={`Wishlist (${wishlist.length} items)`} onClick={() => setWishOpen(true)}>
                             <span className={styles.iconWrap}>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -152,7 +141,6 @@ export default function Header({ onSearch, searchValue = "", activeNav, onNavCha
                             </span>
                         </button>
 
-                        {/* Cart */}
                         <button className={styles.iconBtn} aria-label={`Shopping cart (${cartCount} items)`} onClick={() => setCartOpen(true)}>
                             <span className={styles.iconWrap}>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -164,7 +152,6 @@ export default function Header({ onSearch, searchValue = "", activeNav, onNavCha
                             </span>
                         </button>
 
-                        {/* Hamburger */}
                         <button
                             className={styles.menuBtn}
                             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -176,7 +163,6 @@ export default function Header({ onSearch, searchValue = "", activeNav, onNavCha
                     </div>
                 </div>
 
-                {/* Mobile search */}
                 <form className={styles.mobileSearch} onSubmit={handleSearchSubmit} role="search">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                         <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -192,7 +178,6 @@ export default function Header({ onSearch, searchValue = "", activeNav, onNavCha
                     {query && <button type="button" onClick={clearSearch} className={styles.mobileClear} aria-label="Clear">✕</button>}
                 </form>
 
-                {/* Mobile Nav */}
                 <nav className={`${styles.mobileNav} ${menuOpen ? styles.open : ""}`} aria-label="Mobile navigation" aria-hidden={!menuOpen}>
                     {NAV_ITEMS.map((item) => (
                         <button

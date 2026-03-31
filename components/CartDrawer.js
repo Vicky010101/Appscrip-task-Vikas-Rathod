@@ -20,14 +20,12 @@ export default function CartDrawer({ open, onClose }) {
 
     return (
         <>
-            {/* Backdrop */}
             <div
                 className={`${styles.backdrop} ${open ? styles.backdropOpen : ""}`}
                 onClick={onClose}
                 aria-hidden="true"
             />
 
-            {/* Drawer */}
             <aside
                 className={`${styles.drawer} ${open ? styles.drawerOpen : ""}`}
                 aria-label="Shopping cart"
@@ -37,7 +35,9 @@ export default function CartDrawer({ open, onClose }) {
                 <div className={styles.drawerHead}>
                     <h2 className={styles.drawerTitle}>
                         Shopping Cart
-                        {cart.length > 0 && <span className={styles.drawerCount}>{cart.reduce((s, i) => s + i.qty, 0)}</span>}
+                        {cart.length > 0 && (
+                            <span className={styles.drawerCount}>{cart.reduce((s, i) => s + i.qty, 0)}</span>
+                        )}
                     </h2>
                     <button className={styles.closeBtn} onClick={onClose} aria-label="Close cart">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -74,7 +74,9 @@ export default function CartDrawer({ open, onClose }) {
                                         <Link href={`/product/${item.id}`} className={styles.itemTitle} onClick={onClose}>
                                             {item.title.slice(0, 45)}{item.title.length > 45 ? "…" : ""}
                                         </Link>
-                                        <span className={styles.itemCat}>{(item.categoryName || item.category).replace(/-/g, " ")}</span>
+                                        <span className={styles.itemCat}>
+                                            {(item.categoryName || item.category).replace(/-/g, " ")}
+                                        </span>
                                         <div className={styles.itemBottom}>
                                             <div className={styles.qtyCtrl}>
                                                 <button onClick={() => decQty(item.id)} aria-label="Decrease">−</button>

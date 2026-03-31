@@ -38,7 +38,6 @@ export default function ContactPage() {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFields((f) => ({ ...f, [name]: value }));
-        // Clear error on change
         if (errors[name]) setErrors((e) => { const n = { ...e }; delete n[name]; return n; });
     };
 
@@ -47,7 +46,6 @@ export default function ContactPage() {
         const errs = validate(fields);
         if (Object.keys(errs).length > 0) { setErrors(errs); return; }
         setSubmitting(true);
-        // Simulate async submission
         setTimeout(() => { setSubmitting(false); setSubmitted(true); }, 1200);
     };
 
